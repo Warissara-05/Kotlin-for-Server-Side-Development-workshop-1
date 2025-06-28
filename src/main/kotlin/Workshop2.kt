@@ -51,6 +51,31 @@ fun main() {
     println("--------------------------------------------------")
 
 
+    //2.2
+    val groupedUnder1000 = products
+        .filter { it.price < 1000.0 }
+
+        println("กลุ่มสินค้าตามราคาไม่เกิน 1,000 บาท:\n ")
+        groupedUnder1000.forEach { println(it) }
+        println("--------------------------------------------------")
+
+
+    val groupedUnder10000 = products
+        .filter { it.price < 10000.0 && it.price > 1000.0 }
+
+        println("กลุ่มสินค้าตามราคาอยู่ระหว่าง 1,000 - 9,999 บาท: ")
+        groupedUnder10000.forEach { println(it) }
+        println("--------------------------------------------------")
+
+    val groupedOver10000 = products
+        .filter { it.price > 10000.0 }
+
+    println("กลุ่มสินค้าตามราคา 10,000 บาทขึ้นไป: " )
+    groupedOver10000.forEach { println(it) }
+    println("--------------------------------------------------")
+
+
+
     println("อภิปรายความแตกต่างระหว่าง List และ Sequence:")
     println("1. List Operations (วิธีที่ 1):")
     println("   - ทุกครั้งที่เรียกใช้ operation (เช่น filter, map) จะมีการสร้าง Collection (List) ใหม่ขึ้นมาเพื่อเก็บผลลัพธ์ของขั้นนั้นๆ")
