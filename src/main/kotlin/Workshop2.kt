@@ -3,6 +3,27 @@ package org.example
 // 1. กำหนด data class สำหรับเก็บข้อมูลสินค้า
 data class Product(val name: String, val price: Double, val category: String)
 
+val products = listOf(
+    Product("Laptop",  35000.0, "Electronics"),
+    Product(name = "Smartphone", price = 25000.0, category = "Electronics"),
+    Product(name = "T-shirt", price = 450.0, category = "Apparel"),
+    Product(name = "Monitor", price = 7500.0, category = "Electronics"),
+    Product(name = "Keyboard", price = 499.0, category = "Electronics"), // ราคาไม่เกิน 500
+    Product(name = "Jeans", price = 1200.0, category = "Apparel"),
+    Product(name = "Headphones", price = 1800.0, category = "Electronics") // ตรงตามเงื่อนไข
+)
+
+fun calculateTotalElectronicsPriceOver500(products: List<Product>): Double {
+    return products
+        .filter { it.category == "Electronics" && it.price > 500.0 }
+        .sumOf { it.price }
+}
+
+fun countElectronicsOver500(products: List<Product>): Int {
+    return products
+        .count { it.category == "Electronics" && it.price > 500.0 }
+}
+
 fun main() {
     // 2. สร้างรายการสินค้าตัวอย่าง (List<Product>)
     val products = listOf(
@@ -13,7 +34,6 @@ fun main() {
         Product(name = "Keyboard", price = 499.0, category = "Electronics"), // ราคาไม่เกิน 500
         Product(name = "Jeans", price = 1200.0, category = "Apparel"),
         Product(name = "Headphones", price = 1800.0, category = "Electronics") // ตรงตามเงื่อนไข
-
     )
     println("รายการสินค้าทั้งหมด:")
     products.forEach { println(it) }
